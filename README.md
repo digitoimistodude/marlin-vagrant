@@ -40,8 +40,9 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 4. [How to remove a project or vhost](#how-to-remove-a-project-or-vhost)
 5. [Connecting with another computer in LAN](#connecting-with-another-computer-in-lan)
 6. [Port forwarding (optional)](#port-forwarding-optional)
-7. [Sequel Pro settings for MySQL](#sequel-pro-settings-for-mysql)
-8. [Troubleshooting and issues](#troubleshooting-and-issues)
+7. [Recommended post-installations](#recommended post--installations)
+8. [Sequel Pro settings for MySQL](#sequel-pro-settings-for-mysql)
+9. [Troubleshooting and issues](#troubleshooting-and-issues)
 
 ## Recommendations
 
@@ -130,6 +131,12 @@ This also helps in some cases where you are unable to open http://localhost in b
     osascript -e 'tell application "Terminal" to quit' & exit;
 
 Chmod it by `chmod +x /usr/bin/forwardports` and run `forwardports`. You have to do this every time after reboot, if you are co-working in LAN.
+
+## Recommended post-installations
+
+I have not included everything to this box since I want it keep as minimal as possible, but here's some recommended pieces you should install especially on production (I'll add more later):
+
+- [rocket-nginx](https://github.com/maximejobin/rocket-nginx) - Nginx configuration for WP-Rocket
 
 ## Troubleshooting and issues
 
