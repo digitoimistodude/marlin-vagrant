@@ -30,7 +30,7 @@ Read the original background story about Dude's vagrant-servers [here](https://g
 
 ## Usage
 
-To start this vagrant box, always run `vagrant up --provision`, with provision -hook to ensure all the stuff are loaded up properly. Skip to the [Installation](#installation), if you are ready to start.
+To start this vagrant box, always run `vagrant up --provision`, with provision -hook to ensure all the stuff are loaded up properly.
 
 ## Table of contents
 
