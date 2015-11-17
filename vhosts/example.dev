@@ -2,7 +2,7 @@
     listen 80;
     #listen [::]:80 default ipv6only=on;
 
-    root /var/www/example.dev/public_html;
+    root /var/www/example.dev;
     index index.html index.htm index.php;
 
     server_name example.dev;

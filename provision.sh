@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # WordPress Vagrant config
-# Packages installed:  mysql 5.5, php5 with mysql drivers, apache2, git
+# Packages installed:  mysql 5.5, php5 with mysql drivers, nginx, git
 
 # Unlock the root and give it a password? (YES/NO)
 ROOT=YES
@@ -8,8 +8,8 @@ ROOT=YES
 # Add vhosts
 sudo cp -Rv /vagrant/vhosts/* /etc/nginx/sites-available/
 
-avail=/etc/apache2/sites-available/$1.conf
-enabled=/etc/apache2/sites-enabled/
+avail=/etc/nginx/sites-available/$1.conf
+enabled=/etc/nginx/sites-enabled/
 site=`ls /vagrant/vhosts/`
 
 if [ "$#" != "1" ]; then
@@ -25,7 +25,7 @@ else
 fi
 
 echo "Booting the machine..."
-sudo service apache2 restart
+sudo service nginx restart
 
 if [ ! -f /var/log/firsttime ];
 then
