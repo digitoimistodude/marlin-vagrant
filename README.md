@@ -40,7 +40,7 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 4. [How to remove a project or vhost](#how-to-remove-a-project-or-vhost)
 5. [Connecting with another computer in LAN](#connecting-with-another-computer-in-lan)
 6. [Port forwarding (optional)](#port-forwarding-optional)
-7. [Recommended post-installations](#recommended post--installations)
+7. [Recommended post-installations](#recommended post-installations)
 8. [Sequel Pro settings for MySQL](#sequel-pro-settings-for-mysql)
 9. [Troubleshooting and issues](#troubleshooting-and-issues)
 
