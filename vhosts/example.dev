@@ -1,0 +1,11 @@
+ server {
+    listen 80;
+    #listen [::]:80 default ipv6only=on;
+
+    root /var/www/example.dev/public_html;
+    index index.html index.htm index.php;
+
+    server_name example.dev;
+    include hhvm.conf;
+    include global/wordpress.conf;
+}
