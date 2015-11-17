@@ -66,7 +66,7 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 
 If you make any changes to **Vagrantfile**, run `vagrant reload` or `vagrant up --provision` if the server is not running, or if you change **provision.sh** while running, run `vagrant provision`.
 
-You can always see the apache status by `vagrant ssh`'ing to your vagrant box and typing `sudo service apache2 status`. If it's not started, run `sudo service apache2 start`.
+You can always see the apache status by `vagrant ssh`'ing to your vagrant box and typing `sudo service nginx status`. If it's not started, run `sudo service nginx start`.
 
 ## Installation on Windows
 
@@ -85,7 +85,7 @@ ter on Windows 10), click Properties, click Advaned System Settings tab, click E
 
 ### How to add new vhost
 
-It's simple to manage multiple projects with apache's sites-enabled configs. If your project name is `jolly`, and located in *~/Projects/jolly*, just add new config to vhosts. *vhosts/jolly.dev.conf* would then be:
+It's simple to manage multiple projects with apache's sites-enabled configs. If your project name is `jolly`, and located in *~/Projects/jolly*, just add new config to vhosts. *vhosts/jolly.dev* would then be:
 
     <VirtualHost *:80>
     
@@ -104,9 +104,9 @@ Run `vagrant provision` and boom! http://jolly.dev points to your project file.
 
 ### How to remove a project or vhost
 
-If you remove a project from Projects folder, or rename it, you should also remove/rename `vhosts/projectname.dev.conf` correspondingly and make sure after `vagrant ssh` you don't have that conf to point nonexisting files in `/etc/apache2/sites-enabled` and `/etc/apache2/sites-available`. Otherwise the server (apache) wont' start!
+If you remove a project from Projects folder, or rename it, you should also remove/rename `vhosts/projectname.dev` correspondingly and make sure after `vagrant ssh` you don't have that conf to point nonexisting files in `/etc/nginx/sites-enabled` and `/etc/nginx/sites-available`. Otherwise the server (apache) wont' start!
 
-For example, if we create test project to ~/Projects/test and then remove the folder, next time you are starting up apache fails. You will have to `vagrant ssh` and `sudo rm /etc/apache2/sites-enabled/test.dev.conf && sudo rm /etc/apache2/sites-available/test.dev.conf && /vagrant/vhosts/test.dev.conf`.
+For example, if we create test project to ~/Projects/test and then remove the folder, next time you are starting up apache fails. You will have to `vagrant ssh` and `sudo rm /etc/nginx/sites-enabled/test.dev && sudo rm /etc/nginx/sites-available/test.dev && /vagrant/vhosts/test.dev`.
 
 ## Connecting with another computer in LAN
 
