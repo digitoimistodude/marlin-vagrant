@@ -7,22 +7,7 @@ ROOT=YES
 
 # Add vhosts
 sudo cp -Rv /vagrant/vhosts/* /etc/nginx/sites-available/
-
-avail=/etc/nginx/sites-available/$1.conf
-enabled=/etc/nginx/sites-enabled/
-site=`ls /vagrant/vhosts/`
-
-if [ "$#" != "1" ]; then
-    echo "Available virtual hosts: $site"
-    sudo nginx_modsite -e $site
-else
-
-    if test -e $avail; then
-        sudo ln -s $avail $enabled
-    else
-         "$avail virtual host does not exist! Please create one!$site"
-    fi
-fi
+sudo ln -nfs /etc/nginx/sites-available/* /etc/nginx/sites-enabled/
 
 echo "Booting the machine..."
 sudo service nginx restart
