@@ -146,6 +146,7 @@ Chmod it by `chmod +x /usr/bin/forwardports` and run `forwardports`. You have to
 I have not included everything to this box since I want it keep as minimal as possible, but here's some recommended pieces you should install especially on production (I'll add more later):
 
 - [rocket-nginx](https://github.com/maximejobin/rocket-nginx) - Nginx configuration for WP-Rocket
+- [ngx_pagespeed](https://www.digitalocean.com/community/tutorials/how-to-add-ngx_pagespeed-to-nginx-on-ubuntu-14-04) - The PageSpeed modules are open-source server modules that optimize your site automatically.
 
 ## Troubleshooting and issues
 
