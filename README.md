@@ -1,12 +1,12 @@
-# Wile vagrant
+# Marlin-vagrant
 
-Wile vagrant is a WordPress optimized vagrant server created for local development environment for servers that use WordPress optimized Digital Ocean droplets. *Wile* in the name comes from a certain fast cartoon character.
+Marlin vagrant is a WordPress optimized vagrant server created for local development environment for servers that use WordPress optimized Digital Ocean droplets. Vagrant box is named after *marlin* which is one of the fastest animals in the world.
 
 This vagrant server can be used as plain local server for serving your files or testing static PHP, but it's also perfect for WordPress development.
 
-**Wile is currently a development VM and under testing, so do not use on daily basis.**
+**Marlin is currently a development VM and under testing, so do not use on daily basis.**
 
-![](https://dl.dropboxusercontent.com/u/18447700/wile-vagrant.png)
+![](https://dl.dropboxusercontent.com/u/18447700/vagrant.png)
 
 ## What's inside?
 
@@ -24,7 +24,7 @@ This vagrant server can be used as plain local server for serving your files or 
 
 ## Background
 
-This is based on [wile-vagrant](https://github.com/digitoimistodude/wile-vagrant), my first Vagrant box with Apache. We needed faster and scalable environment, so started to use Digital Ocean droplets and needed a local development server identical to that. And so Wile vagrant was born. 
+This is based on [marlin-vagrant](https://github.com/digitoimistodude/marlin-vagrant), my first Vagrant box with Apache. We needed faster and scalable environment, so started to use Digital Ocean droplets and needed a local development server identical to that. And so Marlin vagrant was born. 
 
 Read the original background story about Dude's vagrant-servers [here](https://github.com/digitoimistodude/jolliest-vagrant#background).
 
@@ -58,7 +58,7 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 3. Install [vagrant](http://www.vagrantup.com) (**Mac OS X** [Homebrew](http://brew.sh/): `brew install vagrant`)
 4. Install vagrant-triggers with command `vagrant plugin install vagrant-triggers`
 5. Install VirtualBox Guest Additions -updater vagrant-vbguest with command `vagrant plugin install vagrant-vbguest`
-6. Clone this repo to your Projects directory (path `~/Projects/wile-vagrant` is depedant in [dudestack](https://github.com/digitoimistodude/dudestack))
+6. Clone this repo to your Projects directory (path `~/Projects/marlin-vagrant` is depedant in [dudestack](https://github.com/digitoimistodude/dudestack))
 7. *(Optional, do this for example if you want to use other image or encounter problems with included Vagrantfile)* If you don't know or don't care, don't do this step. Modify **Vagrantfile**: `config.vm.box` and `config.vm.box_url` to match your production server OS, `config.vm.network` for IP (I recommend it to be `10.1.2.4` to prevent collisions with other subnets) (**For Linux** you need to remove `, :mount_options...` if problems occur with starting the server. Please remove parts that give you errors). **If you don't need to access server from LAN** with co-workers to update WordPress for example, remove completely line with `config.vm.network "public_network"`. You may also need to try different ports than 80 and 443 if your Mac blocks them. For example change the ports to 8080 and 443 (also change triggers accordingly)
 8. If you store your projects in different folder than *~/Projects*, change the correct path to `config.vm.synced_folder`
 9. Edit or add packages to match your production server packages in **provision.sh** if needed (it's good out of the box though)
@@ -79,7 +79,7 @@ ter on Windows 10), click Properties, click Advaned System Settings tab, click E
 4. Start `cmd`
 5. Navigate to root of `C:\` with double dots `..`
 6. `mkdir Projects` to create a project dir and `cd Projects` to enter it
-7. Clone this repo to Projects with command `git clone git@github.com:digitoimistodude/wile-vagrant.git`
+7. Clone this repo to Projects with command `git clone git@github.com:digitoimistodude/marlin-vagrant.git`
 8. Edit `Vagrantfile` with your favorite editor and rename `~/Projects` to `C:/Projects`. Remove `, :mount_options => ['nolock,vers=3,udp,actimeo=2']`
 9. Run `vagrant up --provision`, wait when box is installed and Allow access if it asks it. This can take a moment.
 10. Add `10.1.2.4 somesite.dev` to your **C:/Windows/system32/drivers/etc/hosts** file and have fun!
@@ -152,23 +152,23 @@ I have not included everything to this box since I want it keep as minimal as po
 
 ### Authentication failure
 
-    ==> wile: Booting VM...
-    ==> wile: Waiting for machine to boot. This may take a few minutes...
-        wile: SSH address: 127.0.0.1:2222
-        wile: SSH username: vagrant
-        wile: SSH auth method: private key
-        wile: Warning: Connection timeout. Retrying...
-        wile: Warning: Authentication failure. Retrying...
-        wile: Warning: Authentication failure. Retrying...
-        wile: Warning: Authentication failure. Retrying...
-        wile: Warning: Authentication failure. Retrying...
+    ==> marlin: Booting VM...
+    ==> marlin: Waiting for machine to boot. This may take a few minutes...
+        marlin: SSH address: 127.0.0.1:2222
+        marlin: SSH username: vagrant
+        marlin: SSH auth method: private key
+        marlin: Warning: Connection timeout. Retrying...
+        marlin: Warning: Authentication failure. Retrying...
+        marlin: Warning: Authentication failure. Retrying...
+        marlin: Warning: Authentication failure. Retrying...
+        marlin: Warning: Authentication failure. Retrying...
         ...
 
-This is probably if you use [jolliest-vagrant](https://github.com/digitoimistodude/jolliest-vagrant) or another vagrant box with same ssh keypairs. This can be solved with `cat ~/.ssh/id_rsa.pub`, copying that key, then going to `cd ~/Projects/wile-vagrant && vagrant ssh`, typing password, then adding the file to VM's known_hosts with `nano ~/.ssh/known_hosts` and saving the file while connecting.
+This is probably if you use [jolliest-vagrant](https://github.com/digitoimistodude/jolliest-vagrant) or another vagrant box with same ssh keypairs. This can be solved with `cat ~/.ssh/id_rsa.pub`, copying that key, then going to `cd ~/Projects/marlin-vagrant && vagrant ssh`, typing password, then adding the file to VM's known_hosts with `nano ~/.ssh/known_hosts` and saving the file while connecting.
 
 ### Other issues
 
-In any issue, error or trouble, please open an issue to [issue tracker](https://github.com/digitoimistodude/wile-vagrant/issues).
+In any issue, error or trouble, please open an issue to [issue tracker](https://github.com/digitoimistodude/marlin-vagrant/issues).
 
 ## Sequel Pro settings for MySQL
 
