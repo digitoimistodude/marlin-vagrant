@@ -24,7 +24,7 @@ This vagrant server can be used as plain local server for serving your files or 
 
 ## Background
 
-This is based on [marlin-vagrant](https://github.com/digitoimistodude/marlin-vagrant), my first Vagrant box with Apache. We needed faster and scalable environment, so started to use Digital Ocean droplets and needed a local development server identical to that. And so Marlin vagrant was born. 
+This is based on [jolliest-vagrant](https://github.com/digitoimistodude/jolliest-vagrant), our first Vagrant box with Apache. We needed faster and scalable environment, so started to use Digital Ocean droplets and needed a local development server identical to that. And so Marlin vagrant was born. 
 
 Read the original background story about Dude's vagrant-servers [here](https://github.com/digitoimistodude/jolliest-vagrant#background).
 
