@@ -1,5 +1,3 @@
-![](https://dl.dropboxusercontent.com/u/18447700/wile-vagrant.png)
-
 # Wile vagrant
 
 Wile vagrant is a WordPress optimized vagrant server created for local development environment for servers that use WordPress optimized Digital Ocean droplets.
@@ -7,6 +5,8 @@ Wile vagrant is a WordPress optimized vagrant server created for local developme
 This vagrant server can be used as plain local server for serving your files or testing static PHP, but it's also perfect for WordPress development.
 
 **Wile is currently a development VM and under testing, so do not use on daily basis.**
+
+![](https://dl.dropboxusercontent.com/u/18447700/wile-vagrant.png)
 
 ## What's inside?
 
