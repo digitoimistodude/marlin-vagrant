@@ -1,3 +1,5 @@
+![](https://dl.dropboxusercontent.com/u/18447700/wile-vagrant.png)
+
 # Wile vagrant
 
 The name comes from **Wile E. Coyote and The Road Runner**, because they are fast. Yeah. Wile vagrant is a WordPress optimized vagrant server created for local development environment for servers that use WordPress optimized Digital Ocean droplets.
@@ -5,8 +7,6 @@ The name comes from **Wile E. Coyote and The Road Runner**, because they are fas
 This vagrant server can be used as plain local server for serving your files or testing static PHP, but it's also perfect for WordPress development.
 
 **Wile is currently a development VM and under testing, so do not use on daily basis.**
-
-![](https://dl.dropboxusercontent.com/u/18447700/wile.png)
 
 ## What's inside?
 
