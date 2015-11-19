@@ -1,11 +1,19 @@
- server {
+server {
     listen 80;
     #listen [::]:80 default ipv6only=on;
 
-    root /var/www/example.dev;
+    access_log /var/www/jolly/access.log;
+    error_log /var/www/jolly/error.log;
+
+    root /var/www/jolly;
     index index.html index.htm index.php;
 
-    server_name example.dev;
+    server_name jolly.dev www.jolly.dev;
     include hhvm.conf;
     include global/wordpress.conf;
+
+    #  Static File Caching
+    location ~* .(jpg|jpeg|png|gif|ico|css|js)$ {
+       expires 365d;
+    }
 }

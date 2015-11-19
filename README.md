@@ -67,7 +67,7 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 
 If you make any changes to **Vagrantfile**, run `vagrant reload` or `vagrant up --provision` if the server is not running, or if you change **provision.sh** while running, run `vagrant provision`.
 
-You can always see the apache status by `vagrant ssh`'ing to your vagrant box and typing `sudo service nginx status`. If it's not started, run `sudo service nginx start`.
+You can always see the server status by `vagrant ssh`'ing to your vagrant box and typing `sudo service nginx status`. If it's not started, run `sudo service nginx start`.
 
 ## Installation on Windows
 
@@ -86,28 +86,37 @@ ter on Windows 10), click Properties, click Advaned System Settings tab, click E
 
 ### How to add new vhost
 
-It's simple to manage multiple projects with apache's sites-enabled configs. If your project name is `jolly`, and located in *~/Projects/jolly*, just add new config to vhosts. *vhosts/jolly.dev* would then be:
+It's simple to manage multiple projects with nginx's sites-enabled configs. If your project name is `jolly`, and located in *~/Projects/jolly*, just add new config to vhosts. *vhosts/jolly.dev* would then be:
 
-    <VirtualHost *:80>
-    
-      ServerAdmin webmaster@jolly
-      ServerName  jolly.dev
-      ServerAlias www.jolly.dev
-      DirectoryIndex index.html index.php
-      DocumentRoot /var/www/jolly
-      LogLevel warn
-      ErrorLog  /var/www/jolly/error.log
-      CustomLog /var/www/jolly/access.log combined
-    
-    </VirtualHost>
+````
+server {
+    listen 80;
+    #listen [::]:80 default ipv6only=on;
 
-Run `vagrant provision` and boom! http://jolly.dev points to your project file.
+    access_log /var/www/jolly/access.log;
+    error_log /var/www/jolly/error.log;
+
+    root /var/www/jolly;
+    index index.html index.htm index.php;
+
+    server_name jolly.dev www.jolly.dev;
+    include hhvm.conf;
+    include global/wordpress.conf;
+
+    #  Static File Caching
+    location ~* .(jpg|jpeg|png|gif|ico|css|js)$ {
+       expires 365d;
+    }
+}
+````
+
+Run `vagrant provision`, add `10.1.2.4 jolly.dev` to `/etc/hosts` and boom! http://jolly.dev points to your project file.
 
 ### How to remove a project or vhost
 
-If you remove a project from Projects folder, or rename it, you should also remove/rename `vhosts/projectname.dev` correspondingly and make sure after `vagrant ssh` you don't have that conf to point nonexisting files in `/etc/nginx/sites-enabled` and `/etc/nginx/sites-available`. Otherwise the server (apache) wont' start!
+If you remove a project from Projects folder, or rename it, you should also remove/rename `vhosts/projectname.dev` correspondingly and make sure after `vagrant ssh` you don't have that conf to point nonexisting files in `/etc/nginx/sites-enabled` and `/etc/nginx/sites-available`. Otherwise the server wont' start!
 
-For example, if we create test project to ~/Projects/test and then remove the folder, next time you are starting up apache fails. You will have to `vagrant ssh` and `sudo rm /etc/nginx/sites-enabled/test.dev && sudo rm /etc/nginx/sites-available/test.dev && /vagrant/vhosts/test.dev`.
+For example, if we create test project to ~/Projects/test and then remove the folder, next time you are starting up nginx fails. You will have to `vagrant ssh` and `sudo rm /etc/nginx/sites-enabled/test.dev && sudo rm /etc/nginx/sites-available/test.dev && /vagrant/vhosts/test.dev`.
 
 ## Connecting with another computer in LAN
 
