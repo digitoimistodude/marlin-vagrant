@@ -2,13 +2,13 @@ server {
     listen 80;
     #listen [::]:80 default ipv6only=on;
 
-    access_log /var/www/jolly/access.log;
-    error_log /var/www/jolly/error.log;
+    access_log /var/www/example/access.log;
+    error_log /var/www/example/error.log;
 
-    root /var/www/jolly;
+    root /var/www/example;
     index index.html index.htm index.php;
 
-    server_name jolly.dev www.jolly.dev;
+    server_name example.dev www.example.dev;
     include hhvm.conf;
     include global/wordpress.conf;
 
