@@ -24,7 +24,7 @@ This vagrant server can be used as plain local server for serving your files or 
 
 ## Background
 
-This is based on [jolliest-vagrant](https://github.com/digitoimistodude/jolliest-vagrant), our first Vagrant box with Apache. We needed faster and scalable environment, so started to use Digital Ocean droplets and needed a local development server identical to that. And so Marlin vagrant was born. 
+This is based on [jolliest-vagrant](https://github.com/digitoimistodude/jolliest-vagrant), our first Vagrant box with Apache. We needed faster and scalable environment, so started to use Digital Ocean droplets and needed a local development server identical to that. And so Marlin vagrant was born.
 
 Read the original background story about Dude's vagrant-servers [here](https://github.com/digitoimistodude/jolliest-vagrant#background).
 
@@ -67,7 +67,7 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 
 If you make any changes to **Vagrantfile**, run `vagrant reload` or `vagrant up --provision` if the server is not running, or if you change **provision.sh** while running, run `vagrant provision`.
 
-You can always see the server status by `vagrant ssh`'ing to your vagrant box and typing `sudo service nginx status`. If it's not started, run `sudo service nginx start`.
+You can always see the server status by `vagrant ssh`'ing to your vagrant box and typing `sudo service nginx status`. If it's not started, run `sudo service nginx start`. **Note:** if your server doesn't start, please ensure you either have removed example.dev from `vhosts/` and `/etc/nginx/sites-available` and `/etc/nginx/sites-enabled` or created a directory called `example` to your Projects dir.
 
 ## Installation on Windows
 
@@ -123,7 +123,7 @@ For example, if we create test project to ~/Projects/test and then remove the fo
 You should be good to go after setting up **/etc/hosts** to `192.168.2.242 jolly.dev` (depending on your local subnet of course) on remote computer. If you have problems like I had, run this command on your vagrant host PC (not inside vagrant ssh!):
 
     sudo ssh -p 2222 -gNfL 80:localhost:80 vagrant@localhost -i ~/.vagrant.d/insecure_private_key
-    
+
 This also helps in some cases where you are unable to open http://localhost in browser window.
 
 ### Port forwarding (optional)
@@ -134,9 +134,9 @@ This also helps in some cases where you are unable to open http://localhost in b
     rdr pass on lo0 inet proto tcp from any to 127.0.0.1 port 80 -> 127.0.0.1 port 8080
     rdr pass on lo0 inet proto tcp from any to 127.0.0.1 port 443 -> 127.0.0.1 port 8443
     " | sudo pfctl -f - > /dev/null 2>&1;
-    
+
     echo "==> Fowarding Ports: 80 -> 8080, 443 -> 8443";
-    
+
     osascript -e 'tell application "Terminal" to quit' & exit;
 
 Chmod it by `chmod +x /usr/bin/forwardports` and run `forwardports`. You have to do this every time after reboot, if you are co-working in LAN.
