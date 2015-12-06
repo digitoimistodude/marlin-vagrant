@@ -11,9 +11,4 @@ server {
     server_name example.dev www.example.dev;
     include hhvm.conf;
     include global/wordpress.conf;
-
-    #  Static File Caching
-    location ~* .(jpg|jpeg|png|gif|ico|css|js)$ {
-       expires 365d;
-    }
 }
