@@ -3,7 +3,7 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/trusty64"
-  config.vm.define "wile" do |t| end
+  config.vm.define "marlin" do |t| end
 
   config.vm.network "forwarded_port", host: 80, guest: 80, auto_correct: true
   config.vm.network "forwarded_port", host: 443, guest: 443, auto_correct: true
@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "~/Projects", "/var/www", id: "core", :nfs => true, :mount_options => ['nolock,vers=3,udp,actimeo=2']
 
   config.vm.provider "virtualbox" do |v|
-    v.name = "wile"
+    v.name = "marlin"
     v.customize ["modifyvm", :id, "--memory", "1024", "--ioapic", "on"]
     v.customize ["modifyvm", :id, "--cpuexecutioncap", "90"]
     v.customize ["modifyvm", :id, "--cpus", 1]
