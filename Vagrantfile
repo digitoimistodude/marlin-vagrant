@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox" do |v|
     v.name = "marlin"
-    v.customize ["modifyvm", :id, "--memory", "1024", "--ioapic", "on"]
+    v.customize ["modifyvm", :id, "--memory", "4096", "--ioapic", "on"]
     v.customize ["modifyvm", :id, "--cpuexecutioncap", "90"]
     v.customize ["modifyvm", :id, "--cpus", 1]
     v.customize ['modifyvm', :id, '--natdnshostresolver1', 'on']
