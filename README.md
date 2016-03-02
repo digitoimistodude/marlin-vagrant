@@ -43,6 +43,7 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 7. [Recommended post-installations](#recommended post-installations)
 8. [Sequel Pro settings for MySQL](#sequel-pro-settings-for-mysql)
 9. [Troubleshooting and issues](#troubleshooting-and-issues)
+10. [WP-CLI alias](#wp-cli-alias)
 
 ## Recommendations
 
@@ -147,6 +148,16 @@ I have not included everything to this box since I want it keep as minimal as po
 
 - [rocket-nginx](https://github.com/maximejobin/rocket-nginx) - Nginx configuration for WP-Rocket
 - [ngx_pagespeed](https://www.digitalocean.com/community/tutorials/how-to-add-ngx_pagespeed-to-nginx-on-ubuntu-14-04) - The PageSpeed modules are open-source server modules that optimize your site automatically.
+
+## WP-CLI alias
+
+WP-Cli is included in [dudestack](https://github.com/digitoimistodude/dudestack) per project within `composer.json` and won't work by default. You'll need this alias on your Mac or Linux `.bashrc` or `.bash_profile` file:
+
+```shell
+alias wp='ssh vagrant@10.1.2.4 "cd /var/www/"$(basename "$PWD")"; /var/www/"$(basename "$PWD")"/vendor/wp-cli/wp-cli/bin/wp"'
+```
+
+After restarting Terminal or running `. ~/.bashrc` or `. ~/.bash_profile` you will be able to use `wp` command directly on your host machine without having to ssh into vagrant.
 
 ## Troubleshooting and issues
 
