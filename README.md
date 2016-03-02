@@ -4,7 +4,7 @@ Marlin vagrant is a WordPress optimized vagrant server created for local develop
 
 This vagrant server can be used as plain local server for serving your files or testing static PHP, but it's also perfect for WordPress development.
 
-**Marlin is currently a development VM and under testing, so do not use on daily basis.**
+**Marlin is currently a development VM and under testing.**
 
 ![](https://dl.dropboxusercontent.com/u/18447700/vagrant.png)
 
