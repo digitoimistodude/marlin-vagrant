@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "private_network", ip: "10.1.2.4"
   config.ssh.forward_agent = true
   config.ssh.insert_key = false
-  config.vm.network "public_network", ip: "192.168.0.242", bridge: "en6: USB Ethernet"
+  config.vm.network "public_network", ip: "192.168.0.242", bridge: "en7: USB 10/100/1000 LAN"
   config.vm.synced_folder "~/Projects", "/var/www", id: "core", :nfs => true, :mount_options => ['nolock,vers=3,udp,actimeo=2']
 
   config.vm.provider "virtualbox" do |v|

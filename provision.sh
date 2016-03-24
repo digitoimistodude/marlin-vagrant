@@ -24,6 +24,9 @@ then
     sudo apt-get update
     sudo apt-get -y install nginx mysql-server php5-mysql php5-fpm software-properties-common
     sudo cp /vagrant/bin/* /usr/bin/
+	
+    # Config nginx
+    sudo cp /vagrant/confs/nginx.conf /etc/nginx/
 
     # Install HHVM
     sudo apt-get update
