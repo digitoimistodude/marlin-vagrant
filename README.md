@@ -41,9 +41,10 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 5. [Connecting with another computer in LAN](#connecting-with-another-computer-in-lan)
 6. [Port forwarding (optional)](#port-forwarding-optional)
 7. [Recommended post-installations](#recommended post-installations)
-8. [Sequel Pro settings for MySQL](#sequel-pro-settings-for-mysql)
-9. [Troubleshooting and issues](#troubleshooting-and-issues)
-10. [WP-CLI alias](#wp-cli-alias)
+8. [Create a self-signed SSL Certificate for marlin-vagrant](#create-a-self-signed-ssl-certificate-for-marlin-vagrant)
+9. [Sequel Pro settings for MySQL](#sequel-pro-settings-for-mysql)
+10. [Troubleshooting and issues](#troubleshooting-and-issues)
+11. [WP-CLI alias](#wp-cli-alias)
 
 ## Recommendations
 
@@ -148,6 +149,35 @@ I have not included everything to this box since I want it keep as minimal as po
 
 - [rocket-nginx](https://github.com/maximejobin/rocket-nginx) - Nginx configuration for WP-Rocket
 - [ngx_pagespeed](https://www.digitalocean.com/community/tutorials/how-to-add-ngx_pagespeed-to-nginx-on-ubuntu-14-04) - The PageSpeed modules are open-source server modules that optimize your site automatically.
+
+## Create a self-signed SSL Certificate for marlin-vagrant (optional)
+
+1. Go to the directory you cloned this repo by `cd ~/Projects/marlin-vagrant`
+2. SSH into your vagrant box: `vagrant ssh`
+3. `sudo mkdir /etc/nginx/ssl`
+4. `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt` (press enter all the way through)
+5. `sudo nano /etc/nginx/sites-enabled/yourwebsitename.dev` and make sure it looks like something like this:
+
+````
+server {
+    listen 443 ssl;
+
+    access_log /var/www/yourwebsitename/access.log;
+    error_log /var/www/yourwebsitename/error.log;
+
+    root /var/www/yourwebsitename;
+    index index.html index.htm index.php;
+
+    ssl_certificate /etc/nginx/ssl/nginx.crt;
+    ssl_certificate_key /etc/nginx/ssl/nginx.key;
+
+    server_name yourwebsitename.dev www.yourwebsitename.dev;
+    include hhvm.conf;
+    include global/wordpress.conf;
+}
+````
+
+6. Restart nginx: `sudo service nginx restart`
 
 ## WP-CLI alias
 
