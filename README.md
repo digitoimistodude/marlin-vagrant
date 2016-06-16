@@ -41,7 +41,7 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 5. [Connecting with another computer in LAN](#connecting-with-another-computer-in-lan)
 6. [Port forwarding (optional)](#port-forwarding-optional)
 7. [Recommended post-installations](#recommended post-installations)
-8. [Create a self-signed SSL Certificate for marlin-vagrant](#create-a-self-signed-ssl-certificate-for-marlin-vagrant)
+8. [Create a self-signed SSL Certificate for marlin-vagrant](#create-a-self-signed-ssl-certificate-for-marlin-vagrant-optional)
 9. [Sequel Pro settings for MySQL](#sequel-pro-settings-for-mysql)
 10. [Troubleshooting and issues](#troubleshooting-and-issues)
 11. [WP-CLI alias](#wp-cli-alias)
