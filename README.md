@@ -1,10 +1,12 @@
 # Marlin-vagrant
 
-Marlin vagrant is a WordPress optimized vagrant server created for local development environment for servers that use WordPress optimized Digital Ocean droplets. Vagrant box is named after *marlin* which is one of the fastest animals in the world.
+Marlin vagrant is a WordPress optimized vagrant server created for local development environment for servers that use WordPress optimized software, reliable hardware, brilliant for example if you have Digital Ocean droplets or your own virtual servers in production. 
 
-This vagrant server can be used as plain local server for serving your files or testing static PHP, but it's also perfect for WordPress development.
+This Vagrant box is named after *marlin* which is one of the fastest animals in the world.
 
-**Marlin is currently a development VM and under testing.**
+Marlin vagrant server can be used as plain local server for serving your files or testing static PHP, but it's also perfect for WordPress development.
+
+**Marlin is a strictly development VM and should be customized.** Also works out of the box. Tweak as close as your production server to get the best results.
 
 ![](https://dl.dropboxusercontent.com/u/18447700/vagrant.png)
 
@@ -14,13 +16,13 @@ This vagrant server can be used as plain local server for serving your files or 
 |-------------------------|--------------------------------------------------------------------|
 | Ubuntu                  | 14.04.3 LTS (Trusty Tahr)                                     |
 | MySQL                   | 5.5                                                                |
-| PHP                     | 5.6.15                                       |
+| PHP                     | 5.6.25, 7.0.10                                       |
 | WordPress optimizations | PHP modules recommended for optimal WordPress performance          |
 | Vagrant                 | NFS, provision.sh with pre-installed packages, speed optimizations |
 | CPU cores               | 1                                                                  |
 | RAM                     | 1 GB                                                               |
 | nginx                  | 1.4.6                                                            |
-| HHVM                     | 3.10.1                                       |
+| HHVM                     | 3.14.5                                       |
 
 ## Background
 
@@ -43,8 +45,9 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 7. [Recommended post-installations](#recommended post-installations)
 8. [Create a self-signed SSL Certificate for marlin-vagrant](#create-a-self-signed-ssl-certificate-for-marlin-vagrant-optional)
 9. [Sequel Pro settings for MySQL](#sequel-pro-settings-for-mysql)
-10. [Troubleshooting and issues](#troubleshooting-and-issues)
-11. [WP-CLI alias](#wp-cli-alias)
+10. [Using PHP5.6 or PHP7 instead of HHVM](#using-php56-or-php7-instead-of-hhvm)
+11. [Troubleshooting and issues](#troubleshooting-and-issues)
+12. [WP-CLI alias](#wp-cli-alias)
 
 ## Recommendations
 
@@ -188,6 +191,24 @@ alias wp='ssh vagrant@10.1.2.4 "cd /var/www/"$(basename "$PWD")"; /var/www/"$(ba
 ```
 
 After restarting Terminal or running `. ~/.bashrc` or `. ~/.bash_profile` you will be able to use `wp` command directly on your host machine without having to ssh into vagrant.
+
+## Using PHP5.6 or PHP7 instead of HHVM
+
+You can choose to use php5.6 or php7 instead of HHVM. Just add this inside the server block of your virtual host, for example `/etc/nginx/sites-enabled/example.com`:
+
+````
+# Use php-fpm instead of HHVM
+location ~ \.php$ {
+   try_files $uri /index.php;
+   fastcgi_split_path_info ^(.+\.php)(/.+)$;
+   include fastcgi_params;
+   fastcgi_index index.php;
+   fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+   fastcgi_pass   unix:/var/run/php/php7.0-fpm.sock;
+}
+````
+
+Change the version `fastcgi_pass` for different PHP versions, like 5.6.
 
 ## Troubleshooting and issues
 
