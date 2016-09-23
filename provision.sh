@@ -24,7 +24,7 @@ then
     sudo apt-get update
     sudo apt-get -y install nginx mysql-server php5-mysql php5-fpm software-properties-common
     sudo cp /vagrant/bin/* /usr/bin/
-	
+
     # Config nginx
     sudo cp /vagrant/confs/nginx.conf /etc/nginx/
 
@@ -55,7 +55,9 @@ then
     sudo apt-get remove -y php5-common
     sudo apt-get -y autoremove
     sudo apt-get -y install php5.6-fpm php5.6-curl php5.6-geoip php5.6-imagick php5.6-mcrypt php5.6-recode php5.6-sqlite php5.6-xdebug php5.6-xmlrpc php5.6-xsl php5.6-mysql
+    sudo cp /vagrant/confs/php5.conf /etc/nginx/php5.conf
     sudo apt-get -y install php7.0-fpm php7.0-curl php7.0-mcrypt php7.0-recode php7.0-sqlite php7.0-xmlrpc php7.0-xsl php7.0-mysql
+    sudo cp /vagrant/confs/php7.conf /etc/nginx/php7.conf
     sudo update-rc.d php5.6-fpm defaults
     sudo update-rc.d php5.6-fpm auto
     sudo update-rc.d php7.0-fpm defaults
@@ -63,7 +65,7 @@ then
 
     # Add timezones to database
     mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -uroot -pvagrant mysql
-	
+
     # Install curl & wp-cli
     sudo apt-get -y install curl
     cd ~/ && curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
@@ -73,7 +75,7 @@ then
     sudo service nginx restart
 fi
 
-# Unlock root and set password	
+# Unlock root and set password
 if [ $ROOT = 'YES' ]
 then
 	sudo usermod -U root

@@ -2,6 +2,10 @@ server {
     listen 80;
     #listen [::]:80 default ipv6only=on;
 
+    include php7.conf;
+    #include hhvm.conf;
+    include global/wordpress.conf;
+
     access_log /var/www/example/access.log;
     error_log /var/www/example/error.log;
 
@@ -9,6 +13,4 @@ server {
     index index.html index.htm index.php;
 
     server_name example.dev www.example.dev;
-    include hhvm.conf;
-    include global/wordpress.conf;
 }
