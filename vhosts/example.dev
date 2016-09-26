@@ -6,7 +6,7 @@ server {
     #include hhvm.conf;
     include global/wordpress.conf;
 
-    access_log /var/www/example/access.log;
+    #access_log /var/www/example/access.log;
     error_log /var/www/example/error.log;
 
     root /var/www/example;
