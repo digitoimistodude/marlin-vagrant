@@ -46,8 +46,9 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 8. [Create a self-signed SSL Certificate for marlin-vagrant](#create-a-self-signed-ssl-certificate-for-marlin-vagrant-optional)
 9. [Sequel Pro settings for MySQL](#sequel-pro-settings-for-mysql)
 10. [Using PHP5.6 or PHP7 instead of HHVM](#using-php56-or-php7-instead-of-hhvm)
-11. [Troubleshooting and issues](#troubleshooting-and-issues)
-12. [WP-CLI alias](#wp-cli-alias)
+11. [Error logging in HHVM and PHP](#error-logging-in-hhvm-and-php)
+12. [Troubleshooting and issues](#troubleshooting-and-issues)
+13. [WP-CLI alias](#wp-cli-alias)
 
 ## Recommendations
 
@@ -209,6 +210,27 @@ location ~ \.php$ {
 ````
 
 Change the version `fastcgi_pass` for different PHP versions, like 5.6.
+
+## Error logging in HHVM and PHP
+
+Log in to vagrant with `vagrant ssh` when inside vagrant dir with Terminal, then run `sudo tail -f /var/log/hhvm/error.log` to see errors when using hhvm.conf.
+
+If you want to see php-fpm errors for example in php7.0-fpm, add this to the bottom of `/etc/php/7.0/fpm/pool.d/www.conf`:
+
+````
+catch_workers_output = yes
+php_flag[display_errors] = on
+php_admin_value[error_log] = /var/log/fpm7.0-php.www.log ; remember: touch /var/log/fpm7.0-php.www.log && chmod 775 /var/log/fpm7.0-php.www.log && sudo chown www-data /var/log/fpm7.0-php.www.log
+php_admin_flag[log_errors] = on
+php_admin_flag[catch_workers_output] = yes
+php_admin_value[memory_limit] = 1024M
+slowlog = /var/log/fpm7.0-php.slow.log ; remember: touch /var/log/fpm7.0-php.slow.log && chmod 775 /var/log/fpm7.0-php.slow.log && sudo chown www-data /var/log/fpm7.0-php.slow.log
+request_slowlog_timeout = 10
+````
+
+Then run `touch /var/log/fpm7.0-php.www.log && chmod 775 /var/log/fpm7.0-php.www.log && sudo chown www-data /var/log/fpm7.0-php.www.log` and `touch /var/log/fpm7.0-php.slow.log && chmod 775 /var/log/fpm7.0-php.slow.log && sudo chown www-data /var/log/fpm7.0-php.slow.log` and then restart php7.0-fpm with `sudo service php7.0-fpm restart`. 
+
+To see log, run `sudo tail -f /var/log/fpm7.0-php.www.log`.
 
 ## Troubleshooting and issues
 
