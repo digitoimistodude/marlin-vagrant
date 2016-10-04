@@ -222,6 +222,7 @@ catch_workers_output = yes
 php_flag[display_errors] = on
 php_admin_value[error_log] = /var/log/fpm7.0-php.www.log ; remember: touch /var/log/fpm7.0-php.www.log && chmod 775 /var/log/fpm7.0-php.www.log && sudo chown www-data /var/log/fpm7.0-php.www.log
 php_admin_flag[log_errors] = on
+;php_admin_flag[error_reporting] = E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_WARNING
 php_admin_flag[catch_workers_output] = yes
 php_admin_value[memory_limit] = 1024M
 slowlog = /var/log/fpm7.0-php.slow.log ; remember: touch /var/log/fpm7.0-php.slow.log && chmod 775 /var/log/fpm7.0-php.slow.log && sudo chown www-data /var/log/fpm7.0-php.slow.log
