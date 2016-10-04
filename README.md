@@ -236,7 +236,7 @@ If you alter these, you can check the config for errors by running `sudo php-fpm
 [04-Oct-2016 22:03:06] ERROR: FPM initialization failed
 ````
 
-Then run `touch /var/log/fpm7.0-php.www.log && chmod 775 /var/log/fpm7.0-php.www.log && sudo chown www-data /var/log/fpm7.0-php.www.log` and `touch /var/log/fpm7.0-php.slow.log && chmod 775 /var/log/fpm7.0-php.slow.log && sudo chown www-data /var/log/fpm7.0-php.slow.log` and then restart php7.0-fpm with `sudo service php7.0-fpm restart`. 
+Also remember to check `sudo php-fpm7.0 -t` just in case. Then run `touch /var/log/fpm7.0-php.www.log && chmod 775 /var/log/fpm7.0-php.www.log && sudo chown www-data /var/log/fpm7.0-php.www.log` and `touch /var/log/fpm7.0-php.slow.log && chmod 775 /var/log/fpm7.0-php.slow.log && sudo chown www-data /var/log/fpm7.0-php.slow.log` and then restart php7.0-fpm with `sudo service php7.0-fpm restart`. 
 
 To see log, run `sudo tail -f /var/log/fpm7.0-php.www.log`.
 
