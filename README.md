@@ -229,7 +229,12 @@ slowlog = /var/log/fpm7.0-php.slow.log ; remember: touch /var/log/fpm7.0-php.slo
 request_slowlog_timeout = 10
 ````
 
-If you alter these, you can check the config for errors by running `sudo php-fpm7.0 -y /etc/php/7.0/fpm/pool.d/www.conf`.
+If you alter these, you can check the config for errors by running `sudo php-fpm7.0 -y /etc/php/7.0/fpm/pool.d/www.conf`. Note that this means everything is right (you should see errors and lines if there's incorrect values):
+
+````
+[04-Oct-2016 22:03:06] ERROR: An another FPM instance seems to already listen on /run/php/php7.0-fpm.sock
+[04-Oct-2016 22:03:06] ERROR: FPM initialization failed
+````
 
 Then run `touch /var/log/fpm7.0-php.www.log && chmod 775 /var/log/fpm7.0-php.www.log && sudo chown www-data /var/log/fpm7.0-php.www.log` and `touch /var/log/fpm7.0-php.slow.log && chmod 775 /var/log/fpm7.0-php.slow.log && sudo chown www-data /var/log/fpm7.0-php.slow.log` and then restart php7.0-fpm with `sudo service php7.0-fpm restart`. 
 
