@@ -256,7 +256,7 @@ To see log, run `sudo tail -f /var/log/fpm7.0-php.www.log`.
         marlin: Warning: Authentication failure. Retrying...
         ...
 
-This is probably if you use [jolliest-vagrant](https://github.com/digitoimistodude/jolliest-vagrant) or another vagrant box with same ssh keypairs. This can be solved with `cat ~/.ssh/id_rsa.pub`, copying that key, then going to `cd ~/Projects/marlin-vagrant && vagrant ssh`, typing password, then adding the file to VM's known_hosts with `nano ~/.ssh/known_hosts` and saving the file while connecting.
+This is probably if you use [jolliest-vagrant](https://github.com/digitoimistodude/jolliest-vagrant) or another vagrant box with same ssh keypairs. This can be solved with `cat ~/.ssh/id_rsa.pub`, copying that key, then going to `cd ~/Projects/marlin-vagrant && vagrant ssh`, typing password, then adding the file to VM's known_hosts and authorized_keys with `nano ~/.ssh/known_hosts` and `nano ~/.ssh/authorized_keys` and saving the file while connecting.
 
 ### Other issues
 
