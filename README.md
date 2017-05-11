@@ -41,7 +41,7 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 3. [How to add new vhost](#how-to-add-new-vhost)
 4. [How to remove a project or vhost](#how-to-remove-a-project-or-vhost)
 5. [Connecting with another computer in LAN](#connecting-with-another-computer-in-lan)
-6. [Port forwarding (optional)](#port-forwarding-optional)
+6. [Port forwarding](#port-forwarding-optional)
 7. [Recommended post-installations](#recommended post-installations)
 8. [Create a self-signed SSL Certificate for marlin-vagrant](#create-a-self-signed-ssl-certificate-for-marlin-vagrant-optional)
 9. [Sequel Pro settings for MySQL](#sequel-pro-settings-for-mysql)
