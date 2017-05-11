@@ -18,7 +18,7 @@ Marlin vagrant server can be used as plain local server for serving your files o
 | MySQL                   | 5.5                                                                |
 | PHP                     | 5.6.25, 7.0.10                                       |
 | WordPress optimizations | PHP modules recommended for optimal WordPress performance          |
-| Vagrant                 | NFS, provision.sh with pre-installed packages, speed optimizations |
+| Vagrant                 | NFS, provisiwon.sh with pre-installed packages, speed optimizations |
 | CPU cores               | 1                                                                  |
 | RAM                     | 1 GB                                                               |
 | nginx                  | 1.4.6                                                            |
@@ -41,8 +41,8 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 3. [How to add new vhost](#how-to-add-new-vhost)
 4. [How to remove a project or vhost](#how-to-remove-a-project-or-vhost)
 5. [Connecting with another computer in LAN](#connecting-with-another-computer-in-lan)
-6. [Port forwarding](#port-forwarding-optional)
-7. [Recommended post-installations](#recommended post-installations)
+6. [Port forwarding (optional)](#port-forwarding-optional)
+7. [Recommended post-installations](#recommended-post-installations)
 8. [Create a self-signed SSL Certificate for marlin-vagrant](#create-a-self-signed-ssl-certificate-for-marlin-vagrant-optional)
 9. [Sequel Pro settings for MySQL](#sequel-pro-settings-for-mysql)
 10. [Using PHP5.6 or PHP7 instead of HHVM](#using-php56-or-php7-instead-of-hhvm)
