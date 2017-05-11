@@ -14,15 +14,15 @@ Marlin vagrant server can be used as plain local server for serving your files o
 
 | Feature                 | Version / amount                                                   |
 |-------------------------|--------------------------------------------------------------------|
-| Ubuntu                  | 14.04.3 LTS (Trusty Tahr)                                     |
+| Ubuntu                  | 14.04.3 LTS (Trusty Tahr)                                          |
 | MySQL                   | 5.5                                                                |
-| PHP                     | 5.6.25, 7.0.10                                       |
+| PHP                     | 5.6.25, 7.0.10                                                     |
 | WordPress optimizations | PHP modules recommended for optimal WordPress performance          |
-| Vagrant                 | NFS, provisiwon.sh with pre-installed packages, speed optimizations |
+| Vagrant                 | NFS, provision.sh with pre-installed packages, speed optimizations |
 | CPU cores               | 1                                                                  |
 | RAM                     | 1 GB                                                               |
-| nginx                  | 1.4.6                                                            |
-| HHVM                     | 3.14.5                                       |
+| nginx                   | 1.4.6                                                              |
+| HHVM                    | 3.14.5                                                             |
 
 ## Background
 
