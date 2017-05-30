@@ -22,7 +22,7 @@ Marlin vagrant server can be used as plain local server for serving your files o
 | CPU cores               | 4 (if you need different amount, edit Vagrantfile                  |
 | RAM                     | 8 GB (if you need different amount, edit Vagrantfile               |
 | nginx                   | 1.4.6                                                              |
-| HHVM                    | 3.14.5                                                             |
+| HHVM                    | 3.18.2                                                             |
 
 ## Background
 
