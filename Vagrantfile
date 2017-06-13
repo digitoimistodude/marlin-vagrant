@@ -17,9 +17,10 @@ Vagrant.configure("2") do |config|
     v.name = "marlin"
     v.customize ["modifyvm", :id, "--memory", "8000", "--ioapic", "on"]
     v.customize ["modifyvm", :id, "--cpuexecutioncap", "90"]
-    v.customize ["modifyvm", :id, "--cpus", 4]
+    v.customize ["modifyvm", :id, "--cpus", 2]
     v.customize ['modifyvm', :id, '--natdnshostresolver1', 'on']
     v.customize ['modifyvm', :id, '--natdnsproxy1', 'on']
+    v.customize ["modifyvm", :id, "--ioapic", "on"]
   end
 
   config.vm.provision :shell, :path => "provision.sh"

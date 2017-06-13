@@ -19,7 +19,7 @@ Marlin vagrant server can be used as plain local server for serving your files o
 | PHP                     | 5.6.25, 7.0.10                                                     |
 | WordPress optimizations | PHP modules recommended for optimal WordPress performance          |
 | Vagrant                 | NFS, provision.sh with pre-installed packages, speed optimizations |
-| CPU cores               | 4 (if you need different amount, edit Vagrantfile)                 |
+| CPU cores               | 2 (if you need different amount, edit Vagrantfile)                 |
 | RAM                     | 8 GB (if you need different amount, edit Vagrantfile)              |
 | nginx                   | 1.4.6                                                              |
 | HHVM                    | 3.18.2                                                             |
@@ -49,6 +49,7 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 11. [Error logging in HHVM and PHP](#error-logging-in-hhvm-and-php)
 12. [Troubleshooting and issues](#troubleshooting-and-issues)
 13. [WP-CLI alias](#wp-cli-alias)
+14. [Tips to speed up performance](#tips-to-speed-up-performance)
 
 ## Recommendations
 
@@ -278,3 +279,10 @@ Choose **SSH** tab and add following settings.
 | SSH User: | vagrant |
 | SSH Password: | vagrant |
 | SSH Port: | 22 |
+
+## Tips to speed up performance
+
+You can install following plugins to get more speed:
+
+- [vagrant-cachier](https://github.com/fgrehm/vagrant-cachier)
+- [vagrant-faster](https://github.com/rdsubhas/vagrant-faster)
