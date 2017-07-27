@@ -62,7 +62,7 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 
 1. Install [Virtualbox](https://www.virtualbox.org/)
 2. Start Virtualbox, check updates and install all the latest versions of Virtualbox and Oracle VM Virtualbox Extension Pack, if asked
-3. Install [vagrant](http://www.vagrantup.com) (**Mac OS X** [Homebrew](http://brew.sh/): `brew install vagrant`)
+3. Install [vagrant](http://www.vagrantup.com) (**Mac OS X** [Homebrew](http://brew.sh/): `brew install vagrant` or `brew cask install vagrant`)
 4. Install vagrant-triggers with command `vagrant plugin install vagrant-triggers`
 5. Install VirtualBox Guest Additions -updater vagrant-vbguest with command `vagrant plugin install vagrant-vbguest`
 6. Clone this repo to your Projects directory (path `~/Projects/marlin-vagrant` is depedant in [dudestack](https://github.com/digitoimistodude/dudestack))
