@@ -69,12 +69,12 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 7. *(Optional, do this for example if you want to use other image or encounter problems with included Vagrantfile)* If you don't know or don't care, don't do this step. Modify **Vagrantfile**: `config.vm.box` and `config.vm.box_url` to match your production server OS, `config.vm.network` for IP (I recommend it to be `10.1.2.4` to prevent collisions with other subnets) (**For Linux** you need to remove `, :mount_options...` if problems occur with starting the server. Please remove parts that give you errors). **If you don't need to access server from LAN** with co-workers to update WordPress for example, remove completely line with `config.vm.network "public_network"`. You may also need to try different ports than 80 and 443 if your Mac blocks them. For example change the ports to 8080 and 443 (also change triggers accordingly)
 8. If you store your projects in different folder than *~/Projects*, change the correct path to `config.vm.synced_folder`
 9. Edit or add packages to match your production server packages in **provision.sh** if needed (it's good out of the box though)
-10. Add `10.1.2.4 somesite.dev` to your **/etc/hosts**
+10. Add `10.1.2.4 somesite.test` to your **/etc/hosts**
 11. Run `vagrant up --provision`. This can take a moment.
 
 If you make any changes to **Vagrantfile**, run `vagrant reload` or `vagrant up --provision` if the server is not running, or if you change **provision.sh** while running, run `vagrant provision`.
 
-You can always see the server status by `vagrant ssh`'ing to your vagrant box and typing `sudo service nginx status`. If it's not started, run `sudo service nginx start`. **Note:** if your server doesn't start, please ensure you either have removed example.dev from `vhosts/` and `/etc/nginx/sites-available` and `/etc/nginx/sites-enabled` or created a directory called `example` to your Projects dir.
+You can always see the server status by `vagrant ssh`'ing to your vagrant box and typing `sudo service nginx status`. If it's not started, run `sudo service nginx start`. **Note:** if your server doesn't start, please ensure you either have removed example.test from `vhosts/` and `/etc/nginx/sites-available` and `/etc/nginx/sites-enabled` or created a directory called `example` to your Projects dir.
 
 ## Installation on Windows
 
@@ -89,11 +89,11 @@ ter on Windows 10), click Properties, click Advaned System Settings tab, click E
 7. Clone this repo to Projects with command `git clone git@github.com:digitoimistodude/marlin-vagrant.git`
 8. Edit `Vagrantfile` with your favorite editor and rename `~/Projects` to `C:/Projects`. Remove `, :mount_options => ['nolock,vers=3,udp,actimeo=2']`
 9. Run `vagrant up --provision`, wait when box is installed and Allow access if it asks it. This can take a moment.
-10. Add `10.1.2.4 somesite.dev` to your **C:/Windows/system32/drivers/etc/hosts** file and have fun!
+10. Add `10.1.2.4 somesite.test` to your **C:/Windows/system32/drivers/etc/hosts** file and have fun!
 
 ### How to add new vhost
 
-It's simple to manage multiple projects with nginx's sites-enabled configs. If your project name is `jolly`, and located in *~/Projects/jolly*, just add new config to vhosts. *vhosts/jolly.dev* would then be:
+It's simple to manage multiple projects with nginx's sites-enabled configs. If your project name is `jolly`, and located in *~/Projects/jolly*, just add new config to vhosts. *vhosts/jolly.test* would then be:
 
 ````
 server {
@@ -106,7 +106,7 @@ server {
     root /var/www/jolly;
     index index.html index.htm index.php;
 
-    server_name jolly.dev www.jolly.dev;
+    server_name jolly.test www.jolly.test;
     include hhvm.conf;
     include global/wordpress.conf;
 
@@ -117,17 +117,17 @@ server {
 }
 ````
 
-Run `vagrant provision`, add `10.1.2.4 jolly.dev` to `/etc/hosts` and boom! http://jolly.dev points to your project file.
+Run `vagrant provision`, add `10.1.2.4 jolly.test` to `/etc/hosts` and boom! http://jolly.test points to your project file.
 
 ### How to remove a project or vhost
 
-If you remove a project from Projects folder, or rename it, you should also remove/rename `vhosts/projectname.dev` correspondingly and make sure after `vagrant ssh` you don't have that conf to point nonexisting files in `/etc/nginx/sites-enabled` and `/etc/nginx/sites-available`. Otherwise the server wont' start!
+If you remove a project from Projects folder, or rename it, you should also remove/rename `vhosts/projectname.test` correspondingly and make sure after `vagrant ssh` you don't have that conf to point nonexisting files in `/etc/nginx/sites-enabled` and `/etc/nginx/sites-available`. Otherwise the server wont' start!
 
-For example, if we create test project to ~/Projects/test and then remove the folder, next time you are starting up nginx fails. You will have to `vagrant ssh` and `sudo rm /etc/nginx/sites-enabled/test.dev && sudo rm /etc/nginx/sites-available/test.dev && /vagrant/vhosts/test.dev`.
+For example, if we create test project to ~/Projects/test and then remove the folder, next time you are starting up nginx fails. You will have to `vagrant ssh` and `sudo rm /etc/nginx/sites-enabled/test.test && sudo rm /etc/nginx/sites-available/test.test && /vagrant/vhosts/test.test`.
 
 ## Connecting with another computer in LAN
 
-You should be good to go after setting up **/etc/hosts** to `192.168.2.242 jolly.dev` (depending on your local subnet of course) on remote computer. If you have problems like I had, run this command on your vagrant host PC (not inside vagrant ssh!):
+You should be good to go after setting up **/etc/hosts** to `192.168.2.242 jolly.test` (depending on your local subnet of course) on remote computer. If you have problems like I had, run this command on your vagrant host PC (not inside vagrant ssh!):
 
     sudo ssh -p 2222 -gNfL 80:localhost:80 vagrant@localhost -i ~/.vagrant.d/insecure_private_key
 
@@ -135,7 +135,7 @@ This also helps in some cases where you are unable to open http://localhost in b
 
 ### Port forwarding (optional)
 
-`Vagrantfile` has port forwarding included, but Mac OS X has some limitations. If .dev-urls are not reachable from local area network, please add this to `/usr/bin/forwardports` by `sudo nano /usr/bin/forwardports`:
+`Vagrantfile` has port forwarding included, but Mac OS X has some limitations. If .test-urls are not reachable from local area network, please add this to `/usr/bin/forwardports` by `sudo nano /usr/bin/forwardports`:
 
     echo "
     rdr pass on lo0 inet proto tcp from any to 127.0.0.1 port 80 -> 127.0.0.1 port 8080
@@ -161,7 +161,7 @@ I have not included everything to this box since I want it keep as minimal as po
 2. SSH into your vagrant box: `vagrant ssh`
 3. `sudo mkdir /etc/nginx/ssl`
 4. `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt` (press enter all the way through)
-5. `sudo nano /etc/nginx/sites-enabled/yourwebsitename.dev` and make sure it looks like something like this:
+5. `sudo nano /etc/nginx/sites-enabled/yourwebsitename.test` and make sure it looks like something like this:
 
 ````
 server {
@@ -176,7 +176,7 @@ server {
     ssl_certificate /etc/nginx/ssl/nginx.crt;
     ssl_certificate_key /etc/nginx/ssl/nginx.key;
 
-    server_name yourwebsitename.dev www.yourwebsitename.dev;
+    server_name yourwebsitename.test www.yourwebsitename.test;
     include hhvm.conf;
     include global/wordpress.conf;
 }
