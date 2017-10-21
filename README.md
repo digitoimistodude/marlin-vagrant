@@ -8,7 +8,7 @@ Marlin vagrant server can be used as plain local server for serving your files o
 
 **Marlin is a strictly development VM and should be customized.** Also works out of the box. Tweak as close as your production server to get the best results.
 
-![](https://dl.dropboxusercontent.com/u/18447700/vagrant.png)
+![](https://www.dude.fi/marlin-vagrant.png)
 
 ## What's inside?
 
