@@ -17,12 +17,18 @@ then
 	sudo touch /var/log/firsttime
 
     # Set credentials for MySQL
-	sudo debconf-set-selections <<< "mysql-server-5.5 mysql-server/root_password password vagrant"
-	sudo debconf-set-selections <<< "mysql-server-5.5 mysql-server/root_password_again password vagrant"
+	sudo debconf-set-selections <<< "mariadb-server-10.0 mariadb-server/root_password password vagrant"
+	sudo debconf-set-selections <<< "mariadb-server-10.0 mariadb-server/root_password_again password vagrant"
+    sudo debconf-set-selections <<< "mariadb-server-10.1 mariadb-server/root_password password vagrant"
+    sudo debconf-set-selections <<< "mariadb-server-10.1 mariadb-server/root_password_again password vagrant"
 
-    # Install packages
+    # Install global handy packages
     sudo apt-get update
-    sudo apt-get -y install nginx mysql-server php5-mysql php5-fpm software-properties-common
+    sudo apt-get -y install software-properties-common libnuma-dev
+
+    # Install nginx
+    sudo apt-get update
+    sudo apt-get -y install nginx
     sudo cp /vagrant/bin/* /usr/bin/
 
     # Config nginx
@@ -44,13 +50,13 @@ then
     sudo apt-get update
 
     # Install PHP 7.2
-    sudo apt-get -y install libnuma-dev php7.2-fpm php7.2-mysql php7.2-curl php7.2-gd php7.2-intl php7.2-imagick php-pear php-imagick php7.2-imap php-memcache php7.2-pspell php7.2-recode php7.2-sqlite3 php7.2-tidy php7.2-xmlrpc php7.2-xsl php-gettext php7.2-gettext php-gd php php7.2-zip
+    sudo apt-get -y install php7.2-fpm php7.2-mysql php7.2-curl php7.2-gd php7.2-intl php7.2-imagick php-imagick php7.2-imap php-memcache php7.2-pspell php7.2-recode php7.2-sqlite3 php7.2-tidy php7.2-xmlrpc php7.2-xsl php-gettext php7.2-gettext php-gd php php7.2-zip
 
     # Install PHP 7.0
-    sudo apt-get -y install libnuma-dev php7.0-fpm php7.0-mysql php7.0-curl php7.0-gd php7.0-intl php7.0-imagick php-pear php-imagick php7.0-imap php7.0-mcrypt php-memcache php7.0-memcache php7.0-pspell php7.0-recode php7.0-sqlite3 php7.0-tidy php7.0-xmlrpc php7.0-xsl php7.0-mbstring php-gettext php7.0-gettext php-gd php
+    sudo apt-get -y install php7.0-fpm php7.0-mysql php7.0-curl php7.0-gd php7.0-intl php7.0-imagick php-imagick php7.0-imap php7.0-mcrypt php-memcache php7.0-memcache php7.0-pspell php7.0-recode php7.0-sqlite3 php7.0-tidy php7.0-xmlrpc php7.0-xsl php7.0-mbstring php-gettext php7.0-gettext php-gd php
 
     # Install PHP 5.6
-    sudo apt-get -y install libnuma-dev php5.6-fpm php5.6-mysql php5.6-curl php5.6-gd php5.6-intl php5.6-imagick php-pear php-imagick php5.6-imap php5.6-mcrypt php-memcache php5.6-memcache php5.6-pspell php5.6-recode php5.6-sqlite3 php5.6-tidy php5.6-xmlrpc php5.6-xsl php5.6-mbstring php-gettext php5.6-gettext php-gd
+    sudo apt-get -y install php5.6-fpm php5.6-mysql php5.6-curl php5.6-gd php5.6-intl php5.6-imagick php-imagick php5.6-imap php5.6-mcrypt php-memcache php5.6-memcache php5.6-pspell php5.6-recode php5.6-sqlite3 php5.6-tidy php5.6-xmlrpc php5.6-xsl php5.6-mbstring php-gettext php5.6-gettext php-gd
 
     # PHP configuration
     sudo cp /vagrant/confs/php5.conf /etc/nginx/php5.conf
