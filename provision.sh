@@ -62,12 +62,6 @@ then
     # PHP configuration
     sudo cp /vagrant/confs/php5.conf /etc/nginx/php5.conf
     sudo cp /vagrant/confs/php7.conf /etc/nginx/php7.conf
-    sudo update-rc.d php7.2-fpm defaults
-    sudo update-rc.d php7.2-fpm auto
-    sudo update-rc.d php7.0-fpm defaults
-    sudo update-rc.d php7.0-fpm auto
-    sudo update-rc.d php5.6-fpm defaults
-    sudo update-rc.d php5.6-fpm auto
 
     # Install Redis
     sudo apt-get -y install build-essential tcl8.5
