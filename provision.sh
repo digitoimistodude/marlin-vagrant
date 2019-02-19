@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # WordPress Vagrant config
-# Packages installed:  mysql 5.5, php5 with mysql drivers, nginx, git
+# Packages installed: mysql 5.5, php5 with mysql drivers, nginx, git
 
 # Unlock the root and give it a password? (YES/NO)
 ROOT=YES
@@ -59,6 +59,7 @@ then
          REDIS_LOG_FILE=/var/log/redis.log \
          REDIS_DATA_DIR=/var/lib/redis \
          REDIS_EXECUTABLE=`command -v redis-server` ./utils/install_server.sh
+    redis-cli PING
 
     # Add timezones to database
     mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -uroot -pvagrant mysql
