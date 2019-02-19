@@ -12,22 +12,20 @@ Marlin vagrant server can be used as plain local server for serving your files o
 
 ## What's inside?
 
-| Feature                 | Version / amount                                                   |
-|-------------------------|--------------------------------------------------------------------|
-| Ubuntu                  | 14.04.3 LTS (Trusty Tahr)                                          |
-| MySQL                   | 5.5                                                                |
-| PHP                     | 5.6.25, 7.0.10                                                     |
-| WordPress optimizations | PHP modules recommended for optimal WordPress performance          |
-| Vagrant                 | NFS, provision.sh with pre-installed packages, speed optimizations |
-| CPU cores               | 2 (if you need different amount, edit Vagrantfile)                 |
-| RAM                     | 8 GB (if you need different amount, edit Vagrantfile)              |
-| nginx                   | 1.4.6                                                              |
+|  Feature  |                          Version / Amount                          |
+|:---------:|:------------------------------------------------------------------:|
+| Ubuntu    | 14.04 LTS (Trusty Tahr)                                            |
+| MySQL     | MariaDB 10.3                                                       |
+| PHP       | 7.2, 7.0, 5.6                                                      |
+| nginx     | 1.15                                                               |
+| Redis     | 5.0                                                                |
+| Vagrant   | NFS, provision.sh with pre-installed packages, speed optimizations |
+| CPU cores | 2 (if you need different amount, edit Vagrantfile)                 |
+| RAM       | 8 GB (if you need different amount, edit Vagrantfile)              |
 
 ## Background
 
-This is based on [jolliest-vagrant](https://github.com/digitoimistodude/jolliest-vagrant), our first Vagrant box with Apache. We needed faster and scalable environment, so started to use Digital Ocean droplets and needed a local development server identical to that. And so Marlin vagrant was born.
-
-Read the original background story about Dude's vagrant-servers [here](https://github.com/digitoimistodude/jolliest-vagrant#background).
+This is originally based on [jolliest-vagrant](https://github.com/digitoimistodude/jolliest-vagrant), our first Vagrant box with Apache, but modified heavily later on. Read the original background story about Dude's vagrant-servers [here](https://github.com/digitoimistodude/jolliest-vagrant#background).
 
 ## Usage
 
@@ -148,9 +146,8 @@ Chmod it by `chmod +x /usr/bin/forwardports` and run `forwardports`. You have to
 
 ## Recommended post-installations
 
-I have not included everything to this box since I want it keep as minimal as possible, but here's some recommended pieces you should install especially on production (I'll add more later):
+Not everything is included to this box since we want it keep as minimal as possible, but here's some recommended pieces you should install especially on production:
 
-- [rocket-nginx](https://github.com/maximejobin/rocket-nginx) - Nginx configuration for WP-Rocket
 - [ngx_pagespeed](https://www.digitalocean.com/community/tutorials/how-to-add-ngx_pagespeed-to-nginx-on-ubuntu-14-04) - The PageSpeed modules are open-source server modules that optimize your site automatically.
 
 ## Create a self-signed SSL Certificate for marlin-vagrant (optional)
@@ -192,9 +189,7 @@ alias wp='ssh vagrant@10.1.2.4 "cd /var/www/"$(basename "$PWD")"; /var/www/"$(ba
 
 After restarting Terminal or running `. ~/.bashrc` or `. ~/.bash_profile` you will be able to use `wp` command directly on your host machine without having to ssh into vagrant.
 
-## Error logging in HHVM and PHP
-
-Log in to vagrant with `vagrant ssh` when inside vagrant dir with Terminal, then run `sudo tail -f /var/log/hhvm/error.log` to see errors when using hhvm.conf.
+## Error logging PHP
 
 If you want to see php-fpm errors for example in php7.0-fpm, add this to the bottom of `/etc/php/7.0/fpm/pool.d/www.conf`:
 
