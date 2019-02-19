@@ -189,7 +189,7 @@ alias wp='ssh vagrant@10.1.2.4 "cd /var/www/"$(basename "$PWD")"; /var/www/"$(ba
 
 After restarting Terminal or running `. ~/.bashrc` or `. ~/.bash_profile` you will be able to use `wp` command directly on your host machine without having to ssh into vagrant.
 
-## Error logging PHP
+## Error logging in PHP
 
 If you want to see php-fpm errors for example in php7.0-fpm, add this to the bottom of `/etc/php/7.0/fpm/pool.d/www.conf`:
 
