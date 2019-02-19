@@ -22,7 +22,6 @@ Marlin vagrant server can be used as plain local server for serving your files o
 | CPU cores               | 2 (if you need different amount, edit Vagrantfile)                 |
 | RAM                     | 8 GB (if you need different amount, edit Vagrantfile)              |
 | nginx                   | 1.4.6                                                              |
-| HHVM                    | 3.18.2                                                             |
 
 ## Background
 
@@ -45,11 +44,10 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 7. [Recommended post-installations](#recommended-post-installations)
 8. [Create a self-signed SSL Certificate for marlin-vagrant](#create-a-self-signed-ssl-certificate-for-marlin-vagrant-optional)
 9. [Sequel Pro settings for MySQL](#sequel-pro-settings-for-mysql)
-10. [Using PHP5.6 or PHP7 instead of HHVM](#using-php56-or-php7-instead-of-hhvm)
-11. [Error logging in HHVM and PHP](#error-logging-in-hhvm-and-php)
-12. [Troubleshooting and issues](#troubleshooting-and-issues)
-13. [WP-CLI alias](#wp-cli-alias)
-14. [Tips to speed up performance](#tips-to-speed-up-performance)
+10. [Error logging in HHVM and PHP](#error-logging-in-hhvm-and-php)
+11. [Troubleshooting and issues](#troubleshooting-and-issues)
+12. [WP-CLI alias](#wp-cli-alias)
+13. [Tips to speed up performance](#tips-to-speed-up-performance)
 
 ## Recommendations
 
@@ -193,24 +191,6 @@ alias wp='ssh vagrant@10.1.2.4 "cd /var/www/"$(basename "$PWD")"; /var/www/"$(ba
 ```
 
 After restarting Terminal or running `. ~/.bashrc` or `. ~/.bash_profile` you will be able to use `wp` command directly on your host machine without having to ssh into vagrant.
-
-## Using PHP5.6 or PHP7 instead of HHVM
-
-You can choose to use php5.6 or php7 instead of HHVM. Just add this inside the server block of your virtual host, for example `/etc/nginx/sites-enabled/example.com`:
-
-````
-# Use php-fpm instead of HHVM
-location ~ \.php$ {
-   try_files $uri /index.php;
-   fastcgi_split_path_info ^(.+\.php)(/.+)$;
-   include fastcgi_params;
-   fastcgi_index index.php;
-   fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-   fastcgi_pass   unix:/var/run/php/php7.0-fpm.sock;
-}
-````
-
-Change the version `fastcgi_pass` for different PHP versions, like 5.6.
 
 ## Error logging in HHVM and PHP
 
