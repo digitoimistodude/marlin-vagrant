@@ -1,6 +1,6 @@
-# Marlin-vagrant
+# Marlin vagrant
 
-Marlin vagrant is a WordPress optimized vagrant server created for local development environment for servers that use WordPress optimized software, reliable hardware, brilliant for example if you have Digital Ocean droplets or your own virtual servers in production. 
+Marlin vagrant is a WordPress optimized vagrant server created for local development environment for servers that use WordPress optimized software, reliable hardware, brilliant for your own virtual servers in production. 
 
 This Vagrant box is named after *marlin* which is one of the fastest animals in the world.
 
@@ -8,12 +8,12 @@ Marlin vagrant server can be used as plain local server for serving your files o
 
 **Marlin is a strictly development VM and should be customized.** Also works out of the box. Tweak as close as your production server to get the best results.
 
-![](https://www.dude.fi/marlin-vagrant.png?1)
+![](https://www.dude.fi/marlin-vagrant.png)
 
 ## What's inside?
 
-|  Feature  |                          Version / Amount                          |
-|:---------:|:------------------------------------------------------------------:|
+| Feature   | Version / Amount                                                   |
+|-----------|--------------------------------------------------------------------|
 | Ubuntu    | 14.04 LTS (Trusty Tahr)                                            |
 | MySQL     | MariaDB 10.3                                                       |
 | PHP       | 7.2, 7.0, 5.6                                                      |
@@ -42,7 +42,7 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 7. [Recommended post-installations](#recommended-post-installations)
 8. [Create a self-signed SSL Certificate for marlin-vagrant](#create-a-self-signed-ssl-certificate-for-marlin-vagrant-optional)
 9. [Sequel Pro settings for MySQL](#sequel-pro-settings-for-mysql)
-10. [Error logging in HHVM and PHP](#error-logging-in-hhvm-and-php)
+10. [Error logging in PHP](#error-logging-in-php)
 11. [Troubleshooting and issues](#troubleshooting-and-issues)
 12. [WP-CLI alias](#wp-cli-alias)
 13. [Tips to speed up performance](#tips-to-speed-up-performance)
