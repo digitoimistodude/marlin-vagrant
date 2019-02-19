@@ -28,23 +28,6 @@ then
     # Config nginx
     sudo cp /vagrant/confs/nginx.conf /etc/nginx/
 
-    # Install HHVM
-    sudo apt-get update
-    sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0x5a16e7281be7a449
-    sudo add-apt-repository "deb http://dl.hhvm.com/ubuntu $(lsb_release -sc) main"
-    sudo apt-get update
-    sudo apt-get -y install hhvm
-    sudo update-rc.d hhvm defaults
-
-    # Config HHVM
-    sudo /usr/share/hhvm/install_fastcgi.sh
-    sudo cp /vagrant/confs/hhvm/server.ini /etc/hhvm/server.ini
-    sudo cp /vagrant/confs/hhvm/php.ini /etc/hhvm/php.ini
-    sudo cp /vagrant/confs/hhvm.conf /etc/nginx/hhvm.conf
-    sudo cp -R /vagrant/confs/global /etc/nginx/
-    sudo service hhvm restart
-    sudo /usr/bin/update-alternatives --install /usr/bin/php php /usr/bin/hhvm 60
-
     # Install WordPress specific recommendations
     sudo apt-get -y install php5-cli php5-dev php5-fpm php5-cgi php5-xmlrpc php5-curl php5-gd php5-imagick php-apc php-pear php5-imap php5-mcrypt php5-pspell
 
