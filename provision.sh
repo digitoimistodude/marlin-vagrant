@@ -41,9 +41,10 @@ then
     sudo apt-get -y install mariadb-server
     sudo cp /etc/mysql/my.cnf /etc/mysql/my.cnf.bak
     sudo service mysql start
+    sudo service mysql stop
 
     # mariadb configuration
-    sudo cp /vagrant/confs/mysql.cnf /etc/mysql.cnf
+    sudo cp /vagrant/confs/mysql.cnf /etc/mysql/my.cnf
 
     # Get ready for PHP installation
     sudo LC_ALL=en_US.UTF-8 add-apt-repository -y ppa:ondrej/php
@@ -93,6 +94,7 @@ then
 
     # Restart machine, obviously
     sudo service nginx restart
+    sudo service mysql start
 fi
 
 # Unlock root and set password
