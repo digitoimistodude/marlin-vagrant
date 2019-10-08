@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/xenial64"
   config.vm.define "marlin" do |t| end
 
   config.vm.network "forwarded_port", host: 80, guest: 80, auto_correct: true
