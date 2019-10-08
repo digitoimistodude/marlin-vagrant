@@ -1,6 +1,6 @@
 # Marlin vagrant
 
-Marlin vagrant is a WordPress optimized vagrant server created for local development environment for servers that use WordPress optimized software, reliable hardware, brilliant for your own virtual servers in production. 
+Marlin vagrant is a WordPress optimized vagrant server created for local development environment for servers that use WordPress optimized software, reliable hardware, brilliant for your own virtual servers in production.
 
 This Vagrant box is named after *marlin* which is one of the fastest animals in the world.
 
@@ -14,10 +14,10 @@ Marlin vagrant server can be used as plain local server for serving your files o
 
 | Feature   | Version / Amount                                                   |
 |-----------|--------------------------------------------------------------------|
-| Ubuntu    | 14.04 LTS (Trusty Tahr)                                            |
-| MySQL     | MariaDB 10.3                                                       |
+| Ubuntu    | 16.04 LTS (Xenial Xerus)                                            |
+| MySQL     | MariaDB 10.4                                                       |
 | PHP       | 7.2, 7.0, 5.6                                                      |
-| nginx     | 1.15                                                               |
+| nginx     | 1.10.3                                                               |
 | Redis     | 5.0                                                                |
 | Vagrant   | NFS, provision.sh with pre-installed packages, speed optimizations |
 | CPU cores | 2 (if you need different amount, edit Vagrantfile)                 |
@@ -59,14 +59,13 @@ To start this vagrant box, always run `vagrant up --provision`, with provision -
 1. Install [Virtualbox](https://www.virtualbox.org/)
 2. Start Virtualbox, check updates and install all the latest versions of Virtualbox and Oracle VM Virtualbox Extension Pack, if asked
 3. Install [vagrant](http://www.vagrantup.com) (**Mac OS X** [Homebrew](http://brew.sh/): `brew install vagrant` or `brew cask install vagrant`)
-4. Install vagrant-triggers with command `vagrant plugin install vagrant-triggers`
-5. Install VirtualBox Guest Additions -updater vagrant-vbguest with command `vagrant plugin install vagrant-vbguest`
-6. Clone this repo to your Projects directory (path `~/Projects/marlin-vagrant` is depedant in [dudestack](https://github.com/digitoimistodude/dudestack))
-7. *(Optional, do this for example if you want to use other image or encounter problems with included Vagrantfile)* If you don't know or don't care, don't do this step. Modify **Vagrantfile**: `config.vm.box` and `config.vm.box_url` to match your production server OS, `config.vm.network` for IP (I recommend it to be `10.1.2.4` to prevent collisions with other subnets) (**For Linux** you need to remove `, :mount_options...` if problems occur with starting the server. Please remove parts that give you errors). **If you don't need to access server from LAN** with co-workers to update WordPress for example, remove completely line with `config.vm.network "public_network"`. You may also need to try different ports than 80 and 443 if your Mac blocks them. For example change the ports to 8080 and 443 (also change triggers accordingly)
-8. If you store your projects in different folder than *~/Projects*, change the correct path to `config.vm.synced_folder`
-9. Edit or add packages to match your production server packages in **provision.sh** if needed (it's good out of the box though)
-10. Add `10.1.2.4 somesite.test` to your **/etc/hosts**
-11. Run `vagrant up --provision`. This can take a moment.
+4. Install VirtualBox Guest Additions -updater vagrant-vbguest with command `vagrant plugin install vagrant-vbguest`
+5. Clone this repo to your Projects directory (path `~/Projects/marlin-vagrant` is depedant in [dudestack](https://github.com/digitoimistodude/dudestack))
+6. *(Optional, do this for example if you want to use other image or encounter problems with included Vagrantfile)* If you don't know or don't care, don't do this step. Modify **Vagrantfile**: `config.vm.box` and `config.vm.box_url` to match your production server OS, `config.vm.network` for IP (I recommend it to be `10.1.2.4` to prevent collisions with other subnets) (**For Linux** you need to remove `, :mount_options...` if problems occur with starting the server. Please remove parts that give you errors). **If you don't need to access server from LAN** with co-workers to update WordPress for example, remove completely line with `config.vm.network "public_network"`. You may also need to try different ports than 80 and 443 if your Mac blocks them. For example change the ports to 8080 and 443 (also change triggers accordingly)
+7. If you store your projects in different folder than *~/Projects*, change the correct path to `config.vm.synced_folder`
+8. Edit or add packages to match your production server packages in **provision.sh** if needed (it's good out of the box though)
+9. Add `10.1.2.4 somesite.test` to your **/etc/hosts**
+10. Run `vagrant up --provision`. This can take a moment.
 
 If you make any changes to **Vagrantfile**, run `vagrant reload` or `vagrant up --provision` if the server is not running, or if you change **provision.sh** while running, run `vagrant provision`.
 
@@ -212,7 +211,7 @@ If you alter these, you can check the config for errors by running `sudo php-fpm
 [04-Oct-2016 22:03:06] ERROR: FPM initialization failed
 ````
 
-Also remember to check `sudo php-fpm7.0 -t` just in case. Then run `touch /var/log/fpm7.0-php.www.log && chmod 775 /var/log/fpm7.0-php.www.log && sudo chown www-data /var/log/fpm7.0-php.www.log` and `touch /var/log/fpm7.0-php.slow.log && chmod 775 /var/log/fpm7.0-php.slow.log && sudo chown www-data /var/log/fpm7.0-php.slow.log` and then restart php7.0-fpm with `sudo service php7.0-fpm restart`. 
+Also remember to check `sudo php-fpm7.0 -t` just in case. Then run `sudo touch /var/log/fpm7.0-php.www.log && sudo chmod 775 /var/log/fpm7.0-php.www.log && sudo chown www-data /var/log/fpm7.0-php.www.log` and `sudo touch /var/log/fpm7.0-php.slow.log && sudo chmod 775 /var/log/fpm7.0-php.slow.log && sudo chown www-data /var/log/fpm7.0-php.slow.log` and then restart php7.0-fpm with `sudo service php7.0-fpm restart`.
 
 To see log, run `sudo tail -f /var/log/fpm7.0-php.www.log`.
 
