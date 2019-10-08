@@ -17,10 +17,12 @@ then
 	sudo touch /var/log/firsttime
 
     # Set credentials for MySQL
-	sudo debconf-set-selections <<< "mariadb-server-10.0 mariadb-server/root_password password vagrant"
-	sudo debconf-set-selections <<< "mariadb-server-10.0 mariadb-server/root_password_again password vagrant"
-    sudo debconf-set-selections <<< "mariadb-server-10.1 mariadb-server/root_password password vagrant"
-    sudo debconf-set-selections <<< "mariadb-server-10.1 mariadb-server/root_password_again password vagrant"
+    sudo debconf-set-selections <<< "mariadb-server mariadb-server/root_password password vagrant"
+    sudo debconf-set-selections <<< "mariadb-server mariadb-server/root_password_again password vagrant"
+    sudo debconf-set-selections <<< "mariadb-server-10.4 mariadb-server/root_password password vagrant"
+    sudo debconf-set-selections <<< "mariadb-server-10.4 mariadb-server/root_password_again password vagrant"
+    # sudo debconf-set-selections <<< "mariadb-server-10.1 mariadb-server/root_password password vagrant"
+    # sudo debconf-set-selections <<< "mariadb-server-10.1 mariadb-server/root_password_again password vagrant"
 
     # Install global handy packages
     sudo apt-get update
@@ -35,8 +37,8 @@ then
     sudo cp /vagrant/confs/nginx.conf /etc/nginx/
 
     # Install mariadb
-    sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
-    sudo add-apt-repository 'deb [arch=amd64,i386] http://mirror.netinch.com/pub/mariadb/repo/10.1/ubuntu trusty main'
+    sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+    sudo add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://nyc2.mirrors.digitalocean.com/mariadb/repo/10.4/ubuntu xenial main'
     sudo apt-get update
     sudo apt-get -y install mariadb-server
     sudo cp /etc/mysql/my.cnf /etc/mysql/my.cnf.bak
