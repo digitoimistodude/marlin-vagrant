@@ -61,6 +61,9 @@ then
     # Install PHP 5.6
     sudo apt-get -y install php5.6-fpm php5.6-mysql php5.6-curl php5.6-gd php5.6-intl php5.6-imagick php-imagick php5.6-imap php5.6-mcrypt php-memcache php5.6-memcache php5.6-pspell php5.6-recode php5.6-sqlite3 php5.6-tidy php5.6-xmlrpc php5.6-xsl php5.6-mbstring php-gettext php5.6-gettext php-gd
 
+    # General PHP packages
+    sudo apt-get -y install php-mysql
+    
     # PHP configuration
     sudo cp /vagrant/confs/php5.conf /etc/nginx/php5.conf
     sudo cp /vagrant/confs/php7.conf /etc/nginx/php7.conf
