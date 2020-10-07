@@ -1,5 +1,7 @@
 # Marlin vagrant
 
+**See also** our super-lightweight [native LEMP server for macOS](https://github.com/digitoimistodude/macos-lemp-setup).
+
 Marlin vagrant is a WordPress optimized vagrant server created for local development environment for servers that use WordPress optimized software, reliable hardware, brilliant for your own virtual servers in production.
 
 This Vagrant box is named after *marlin* which is one of the fastest animals in the world.
