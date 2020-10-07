@@ -118,7 +118,7 @@ Run `vagrant provision`, add `10.1.2.4 jolly.test` to `/etc/hosts` and boom! htt
 
 If you remove a project from Projects folder, or rename it, you should also remove/rename `vhosts/projectname.test` correspondingly and make sure after `vagrant ssh` you don't have that conf to point nonexisting files in `/etc/nginx/sites-enabled` and `/etc/nginx/sites-available`. Otherwise the server wont' start!
 
-For example, if we create test project to ~/Projects/test and then remove the folder, next time you are starting up nginx fails. You will have to `vagrant ssh` and `sudo rm /etc/nginx/sites-enabled/test.test && sudo rm /etc/nginx/sites-available/test.test && /vagrant/vhosts/test.test`.
+For example, if we create test project to ~/Projects/test and then remove the folder, next time you are starting up nginx fails. You will have to `vagrant ssh` and `sudo rm /etc/nginx/sites-enabled/test.test && sudo rm /etc/nginx/sites-available/test.test && sudo rm /vagrant/vhosts/test.test`.
 
 ## Connecting with another computer in LAN
 
