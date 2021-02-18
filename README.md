@@ -1,6 +1,7 @@
-# Marlin vagrant
+| :bangbang: | **This repository is no longer maintained. Setup still works, but does not receive any further updates. Included versions do become unsupported at some point. Consider our [native LEMP server for macOS](https://github.com/digitoimistodude/macos-lemp-setup) instead.**  |
+|:------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-**See also** our super-lightweight [native LEMP server for macOS](https://github.com/digitoimistodude/macos-lemp-setup).
+# Marlin vagrant
 
 Marlin vagrant is a WordPress optimized vagrant server created for local development environment for servers that use WordPress optimized software, reliable hardware, brilliant for your own virtual servers in production.
 
